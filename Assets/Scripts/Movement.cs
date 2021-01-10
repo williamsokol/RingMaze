@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     public int jumpPow;
 
     public GameObject moveCenter;
-    private Feet feet;
+ 
 
     
     [SerializeField]private bool isGrounded;
@@ -25,7 +25,6 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<BoxCollider>();
-        feet = GetComponentInChildren<Feet>();
 //        print(col);
     }
 

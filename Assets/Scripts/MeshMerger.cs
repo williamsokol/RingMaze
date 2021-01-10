@@ -29,6 +29,7 @@ public class MeshMerger : MonoBehaviour
         transform.GetComponent<MeshCollider>().sharedMesh = mesh;
         //transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
         transform.gameObject.SetActive(true);
+        transform.position = new Vector3(0,0,0);
     }
 
     // Update is called once per frame
