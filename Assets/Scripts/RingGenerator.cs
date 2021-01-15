@@ -104,7 +104,7 @@ public class RingGenerator : MonoBehaviour
                         }
        //             
                         maze[y+numbers[pickedNum][0]+1][x+numbers[pickedNum][1]] = 2;
-                        print("thing x="+ x+" y="+y+" from:"+(x+numbers[pickedNum][1])+","+(y+numbers[pickedNum][0]));
+//                        print("thing x="+ x+" y="+y+" from:"+(x+numbers[pickedNum][1])+","+(y+numbers[pickedNum][0]));
                     }
                     axis = numbers[pickedNum][axis]==0? 1-axis:axis; // sees if we should maove directions
 
@@ -113,7 +113,7 @@ public class RingGenerator : MonoBehaviour
                     }
                 }
                 if(valid){
-                    print("thing x="+ x+" y="+y+" from:"+(numbers[pickedNum][1])+","+(numbers[pickedNum][0]));
+//                    print("thing x="+ x+" y="+y+" from:"+(numbers[pickedNum][1])+","+(numbers[pickedNum][0]));
                     return true;
                 }
             }    
@@ -132,7 +132,7 @@ public class RingGenerator : MonoBehaviour
     {
 
         int ringBlockDensity = (int)((blockDensity)*  ringAmount * ringFab.transform.childCount)/100;
-        print("qwerty " + ringBlockDensity);
+//        print("qwerty " + ringBlockDensity);
 
         maze = new int[ringAmount][];
         for(int i=0; i<ringAmount; i++){
@@ -155,43 +155,7 @@ public class RingGenerator : MonoBehaviour
                 }
             }
         }
-        //maze[0][1] = 1;
         
-        // int[][] path = new int[pathLength][];
-        // for(int i=0; i<pathLength; i++){
-        //     path[i] = new int[2];
-        //     path[i][0] = Random.Range(-1,1+1);
-
-        //     path[i][1] = Random.Range(-3,3+1);
-        //     if( path[i][0]+grid.y < 0)
-        //     {
-        //         path[i][0] = (int)grid.y;
-        //     }
-        //     grid += new Vector2(path[i][1],path[i][0]);
-
-        //     print(i+" | "+grid);
-        //     // for(int j =0;j<path[i][1];j++){
-        //     //     maze[][]
-        //     // }    
-        // }
-
-        
-
-        // for(int i=0; i< maze.Length; i++)
-        // {
-            
-            
-        //     for(int j=0; j<maze[i].Length; j++)
-        //     {
-                
-                
-        //         if(Random.value > .5){
-        //             maze[i][j]=true;
-        //         }
-        //     }
-            
-
-        // }
 
         
 

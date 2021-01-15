@@ -321,9 +321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringFab: {fileID: 5511369059025329406, guid: d5ba0ad7d4f7533509cdff52a0193fbd, type: 3}
-  ringAmount: 4
+  ringAmount: 10
   autoGenerate: 1
-  blockDensity: 0.1
+  blockDensity: 27
 --- !u!1001 &436151307
 PrefabInstance:
   m_ObjectHideFlags: 0
