@@ -14,12 +14,14 @@ public class Movement : MonoBehaviour
     
     [SerializeField]private bool isGrounded;
     private float dir;
+
+    
     private int wall;
     private Rigidbody rb;
     private BoxCollider col;
     
-
-   GameObject currentGround;
+    private GameObject currentWall;
+    GameObject currentGround;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +42,11 @@ public class Movement : MonoBehaviour
         
     }
     void FixedUpdate(){
-        if(wall == 0 || dir != -wall){
+        if(wall == 0 || dir == -wall){
             transform.RotateAround(moveCenter.transform.position, Vector3.up, dir * speed * Time.deltaTime);
             wall=0;
         }
+//        print(wall);
 
     }
     void OnCollisionEnter(Collision collision){
@@ -57,25 +60,26 @@ public class Movement : MonoBehaviour
                  isGrounded = true;
                  //print(gamePoints[0].contacts.Length);
                  currentGround = collision.gameObject;
-                 Debug.Log("Down");
+                 //Debug.Log("Down");
              }
              if(Mathf.Approximately(angle, 180))
              {
                  //Up
-                 Debug.Log("Up");
+                // Debug.Log("Up");
              }
              if(Mathf.Approximately(angle, 90)){
                  // Sides
+                 currentWall = collision.gameObject;
                  Vector3 cross = Vector3.Cross(transform.forward, hit);
                  if (cross.y > 0)
                  { // left side of the player
-                     Debug.Log("Left");
-                     wall = -1;
+                     //Debug.Log("Left");
+                     wall = 1;
                  }
                  else
                  { // right side of the player
-                     Debug.Log("Right");
-                     wall = 1;
+                     //Debug.Log("Right");
+                     wall = -1;
                  }
              }
        
@@ -84,6 +88,9 @@ public class Movement : MonoBehaviour
     void OnCollisionExit(Collision collision){
         if (currentGround  == collision.gameObject){
             isGrounded = false;
+        }
+        if(currentWall == collision.gameObject){
+            wall=0;
         }
         
         // float angle = Vector3.Angle(hit, Vector3.up);

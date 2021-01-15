@@ -19,7 +19,7 @@ public class CamFollow : MonoBehaviour
         delayedPlayerPos.rotation = playerPos.rotation;
         delayedPlayerPos.position = playerPos.position;
 
-        print(playerPos.rotation);
+//        print(playerPos.rotation);
         offsetP = playerPos.position -transform.position;
         offsetR = playerPos.rotation.eulerAngles - transform.rotation.eulerAngles;
     }
@@ -34,10 +34,10 @@ public class CamFollow : MonoBehaviour
         
         int dir =0;
         if(cross.y >0 ){
-            print("right");
+            //print("right");
             dir=-1;
         }else{
-            print("left");
+            //print("left");
             dir=1;
         }
         

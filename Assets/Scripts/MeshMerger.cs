@@ -8,6 +8,13 @@ public class MeshMerger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        MergeMeshs();
+    }
+
+    // Update is called once per frame
+    void MergeMeshs()
+    {
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
         CombineInstance[] combine = new CombineInstance[meshFilters.Length];
 //        print(meshFilters.Length);
@@ -25,16 +32,14 @@ public class MeshMerger : MonoBehaviour
         mesh = new Mesh();
         mesh.CombineMeshes(combine);
 
+        mesh.RecalculateNormals();
+
         transform.GetComponent<MeshFilter>().mesh = mesh;
         transform.GetComponent<MeshCollider>().sharedMesh = mesh;
         //transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-        transform.gameObject.SetActive(true);
-        transform.position = new Vector3(0,0,0);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
+
+        transform.gameObject.SetActive(true);
+        transform.position = new Vector3(0f,0f,0f);
     }
 }
