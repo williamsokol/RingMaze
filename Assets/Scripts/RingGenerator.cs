@@ -12,6 +12,7 @@ public class RingGenerator : MonoBehaviour
     public int ringAmount;
     public bool autoGenerate;
     public int blockDensity;
+    public static int mapHeight;
 
     [SerializeField] public int[][] maze;
 
@@ -21,13 +22,14 @@ public class RingGenerator : MonoBehaviour
 
     }
 
-    void Start()
+    void Awake()
     {
         parent = GameObject.Find("Environment");
         maze = DesignMaze();
-        System.Console.Write("testing");
+        mapHeight = (int)(ringAmount * 1.3225f);
+//        print(mapHeight);
         for(int i=0; i< ringAmount;i++){
-            GameObject ring = Instantiate(ringFab,new Vector3(0f,i*1.3225f,0f),Quaternion.identity,parent.transform);
+            GameObject ring = Instantiate(ringFab,new Vector3(0f,transform.position.y+i*1.3225f,0f),Quaternion.identity,parent.transform);
             
             for(int j=0;j<ring.transform.childCount;j++){
                 GameObject brick = ring.transform.GetChild(j).gameObject;
@@ -69,7 +71,8 @@ public class RingGenerator : MonoBehaviour
         }
 
         for(int i=0;i<numbers.Count;i++){
-            int pickedNum = Random.Range(0,numbers.Count);
+            int pickedNum = Random.Range(0,numbers.Count/2);
+            pickedNum += Random.Range(0,numbers.Count/2);
 
 //            print(y+numbers[pickedNum][0] >=0 && y+numbers[pickedNum][0] < maze.Length);
             //Debug.Log((y+numbers[pickedNum][0]) +" "+(x+numbers[pickedNum][1]))
@@ -130,6 +133,7 @@ public class RingGenerator : MonoBehaviour
     // Update is called once per frame
     int[][] DesignMaze()
     {
+        float timer = Time.realtimeSinceStartup;
 
         int ringBlockDensity = (int)((blockDensity)*  ringAmount * ringFab.transform.childCount)/100;
 //        print("qwerty " + ringBlockDensity);
@@ -152,11 +156,15 @@ public class RingGenerator : MonoBehaviour
 //                    print("did somthing");
                     maze[y][x] = 1;
                     blocks++;
+                    timer = Time.realtimeSinceStartup;
                 }
+            }
+            if( Time.realtimeSinceStartup-timer > 4){
+                break;
             }
         }
         
-
+        print( Time.realtimeSinceStartup-timer);
         
 
         return maze;
