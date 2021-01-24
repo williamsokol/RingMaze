@@ -160,6 +160,9 @@ public class RingGenerator : MonoBehaviour
                 }
             }
             if( Time.realtimeSinceStartup-timer > 4){
+                print("restarting maze");
+                maze = new int[ringAmount][];
+                maze = DesignMaze();
                 break;
             }
         }

@@ -35,8 +35,9 @@ public class Movement : MonoBehaviour
     void Update()
     {
         // detct for jumping
-        if(Input.GetButtonDown("Jump") && isGrounded){
+        if(Input.GetButton("Jump") && isGrounded){
             rb.AddForce(transform.up*jumpPow*10);
+            isGrounded = false;
         }
 
         //left and right movement

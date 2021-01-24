@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public float attackSpeed;
     public float fieldOfRange = 90;
     public float aimDistance = 100f;
+    [SerializeField] private LayerMask ignore;
     float timer =0;
     // Start is called before the first frame update
     void Start()
@@ -25,11 +26,11 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if(Input.GetButtonDown("Fire1") && timer>attackRate){
             Vector3 aim;
-            if(Physics.Raycast(mouseRay,out hit, aimDistance) && hit.transform.gameObject != Player.instance.gameObject)
+            if(Physics.Raycast(mouseRay,out hit, aimDistance,~ignore) && hit.transform.gameObject != Player.instance.gameObject)
             {                       
                 aim = hit.point;
             }else{
-                aim = mouseRay.origin+mouseRay.direction* (9f);
+                aim = mouseRay.origin+mouseRay.direction* (20f);
                 //print("test "+ aim);
             }
             Shoot(aim);
