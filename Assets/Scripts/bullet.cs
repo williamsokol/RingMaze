@@ -46,7 +46,7 @@ public class bullet : MonoBehaviour
             }
         }else
         {
-            print ("non-enemy hit: ");
+//            print ("non-enemy hit: ");
         }
 
         

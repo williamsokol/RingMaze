@@ -185,7 +185,7 @@ public class RingGenerator : MonoBehaviour
         maze[1][0] = 0;
         maze[1][1] = 0;
         
-        print( Time.realtimeSinceStartup-timer);
+//        print( Time.realtimeSinceStartup-timer);
         
 
         return maze;

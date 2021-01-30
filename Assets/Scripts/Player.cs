@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private float _HP;
+    private bool dead;
     
     public float HP{
         get{return _HP;}
@@ -19,9 +20,10 @@ public class Player : MonoBehaviour
     void HpUpdate()
     {
         HpSlider.GetComponent<Slider>().value = HP;
-        if(HP <= 0){
-            print("you lost!");
-            LevelLoader.instance.GotoScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        if(HP <= 0 && !dead){
+            dead = true;
+//            print("you lost!");
+            LevelLoader.instance.GotoScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1);
         }
     }
     

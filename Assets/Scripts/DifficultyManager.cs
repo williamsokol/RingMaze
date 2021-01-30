@@ -21,7 +21,7 @@ public class DifficultyManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        
 
         Boss boss = GameObject.Find("Pyramid").GetComponent<Boss>();
         BossHp = (int)boss.HP;
@@ -30,15 +30,19 @@ public class DifficultyManager : MonoBehaviour
     // Update is called once per frame
     public void Win()
     {
+        print("you won++"+ BossHp);
         BossHp++;
         CoinCounter.coinTotal++;
         
         LevelLoader.instance.GotoScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        Boss boss = GameObject.Find("Pyramid").GetComponent<Boss>();
-        boss.HP = (float)BossHp;
-    }
+    // public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    // {
+    //     Boss boss = GameObject.Find("Pyramid")?.GetComponent<Boss>();
+    //     if(boss != null){
+    //        boss.SetHp(BossHp);
+    //     }
+      
+    // }
 
 }

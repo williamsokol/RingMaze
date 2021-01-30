@@ -1897,8 +1897,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 3115e43f2f6550a4b8b4f99b60c1e8e2,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 46e1080a78a2fbb69a5c173866f8e137, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 9c3fdcfed1246f7c594420916b067fb8, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -2009,6 +2009,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946fdd67349fc0255b0bf11ef157f59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songs:
+  - {fileID: 8300000, guid: 9c3fdcfed1246f7c594420916b067fb8, type: 3}
+  - {fileID: 8300000, guid: ab9942b0964d7be76831895735f3a554, type: 3}
+  - {fileID: 8300000, guid: 46e1080a78a2fbb69a5c173866f8e137, type: 3}
   musicSource: {fileID: 771659902}
   mixer: {fileID: 24100000, guid: 3115e43f2f6550a4b8b4f99b60c1e8e2, type: 2}
 --- !u!1 &798597928

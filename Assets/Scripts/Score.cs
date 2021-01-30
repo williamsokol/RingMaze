@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Score : MonoBehaviour
@@ -19,13 +20,20 @@ public class Score : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject.transform.root.gameObject);
 
-        scoreText  = GetComponent<TextMeshProUGUI>();
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
     // Update is called once per frame
     public void ChangeScore(int scoreChange)
     {
         score  +=  scoreChange;
+        scoreText.text = "Score: " + score;
+    }
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        scoreText  = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         scoreText.text = "Score: " + score;
     }
 }

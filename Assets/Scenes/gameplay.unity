@@ -2176,7 +2176,6 @@ GameObject:
   - component: {fileID: 1756547788}
   - component: {fileID: 1756547790}
   - component: {fileID: 1756547789}
-  - component: {fileID: 1756547791}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -2301,20 +2300,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756547787}
   m_CullTransparentMesh: 0
---- !u!114 &1756547791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756547787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 683a4209cbfa4894a8ebff90cd6532cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  score: 0
 --- !u!1001 &1815305603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2498,6 +2483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052932516}
   - component: {fileID: 2052932515}
+  - component: {fileID: 2052932517}
   m_Layer: 0
   m_Name: DifficultyManager
   m_TagString: Untagged
@@ -2532,6 +2518,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2052932517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052932514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683a4209cbfa4894a8ebff90cd6532cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1756547789}
+  score: 0
 --- !u!1 &2108272024
 GameObject:
   m_ObjectHideFlags: 0

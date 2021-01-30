@@ -55,7 +55,7 @@ public class Boss : MonoBehaviour
         Score.instance?.ChangeScore(5);
 
         if(HP <= 0){
-            print("you won");
+            
             bossDead = true;
             lazer.enabled = false;
             lazerEffect.SetActive(false);
@@ -66,7 +66,7 @@ public class Boss : MonoBehaviour
         }
     }
     
-    void Start()
+    void Awake()
     {
         // stuff for the scaling up and down
         scaleAmount = RingGenerator.mapHeight;
@@ -80,11 +80,18 @@ public class Boss : MonoBehaviour
         lazerPos =.5f;
 
         // stuff for the bosses hp:
+        //SetHp(HP);
+        float hp = DifficultyManager.instance == null? 3: DifficultyManager.instance.BossHp;
+        SetHp(hp);
+
+    }
+    public void SetHp(float newHP)
+    {
+        
         hpSlider = GameObject.Find("BossHp");
-        print(hpSlider);
-        hpSlider.GetComponent<Slider>().maxValue = HP;
-        hpSlider.GetComponent<Slider>().value = HP;
-    
+//        print(hpSlider);
+        hpSlider.GetComponent<Slider>().maxValue = newHP;
+        HP = newHP;
     }
     void Update(){
         if(timer > attackRate  && shootStage == 0 && Movement.moved){
@@ -103,7 +110,7 @@ public class Boss : MonoBehaviour
     void FixedUpdate()
     {
         AimLazer();
-        if(shootStage == 3){
+        if(shootStage == 3 && Movement.moved){
             ShootingLazer();
         }else{
             lazer.enabled = false;
