@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    
+    public GameObject explosion;
     public float bulletSpeed;
     public Vector3 direction;
     private Vector3 lastPosition;
@@ -31,7 +31,28 @@ public class bullet : MonoBehaviour
        
     }
     void Hit(){
+       
+        if(hit.transform != null ){
+            if(hit.transform.gameObject.GetComponent<Enemy>() != null){
+                hit.transform.gameObject.GetComponent<Enemy>().HP -= 1;
+                GameObject thing  = Instantiate(explosion,hit.point, Quaternion.identity);
+                Destroy(thing,.5f);
+            }else if(hit.transform.root.gameObject.GetComponent<Boss>() != null){
+                if(Boss.bossVulnerable){
+                    hit.transform.root.gameObject.GetComponent<Boss>().HP -= 1;
+                    GameObject thing  = Instantiate(explosion,hit.point, Quaternion.identity);
+                    Destroy(thing,.5f);
+                }
+            }
+        }else
+        {
+            print ("non-enemy hit: ");
+        }
+
+        
+
         Destroy(gameObject);
+        
     }
     
 }

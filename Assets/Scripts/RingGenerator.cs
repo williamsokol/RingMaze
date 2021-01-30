@@ -8,6 +8,8 @@ public class RingGenerator : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject ringFab;
+    public GameObject coinFab;
+    public GameObject coinParent;
     private GameObject parent;
     public int ringAmount;
     public bool autoGenerate;
@@ -26,6 +28,8 @@ public class RingGenerator : MonoBehaviour
     {
         parent = GameObject.Find("Environment");
         maze = DesignMaze();
+        AddCoins();
+
         mapHeight = (int)(ringAmount * 1.3225f);
 //        print(mapHeight);
         for(int i=0; i< ringAmount;i++){
@@ -39,6 +43,13 @@ public class RingGenerator : MonoBehaviour
                     //Time.timeScale = 0.1f;
                 }else{
                     brick.SetActive(false);
+                    // spawn a coin here
+                    if(maze[i][j] ==  3)
+                    {
+                        Vector3 pos = brick.GetComponent<Renderer>().bounds.center;
+                        pos[1] -= .2f;
+                        Instantiate(coinFab, pos, Quaternion.identity,coinParent.transform);
+                    }
                 }
             }
         }
@@ -143,7 +154,10 @@ public class RingGenerator : MonoBehaviour
             maze[i] = new int[ringFab.transform.childCount];
         }
         maze[0][0] = 1;
+        maze[0][1] = 1;
+       
 
+        //  create the blocks and paths of maze
         int blocks=0;
         while( blocks< ringBlockDensity){
             int x = Random.Range(0,(ringFab.transform.childCount));
@@ -167,9 +181,28 @@ public class RingGenerator : MonoBehaviour
             }
         }
         
+        
+        maze[1][0] = 0;
+        maze[1][1] = 0;
+        
         print( Time.realtimeSinceStartup-timer);
         
 
         return maze;
+    }
+    void AddCoins()
+    {
+        //create the coins of the maze
+        int coin=0;
+        while( coin< CoinCounter.coinTotal){
+            int x = Random.Range(0,(ringFab.transform.childCount));
+            int y = Random.Range(0,(ringAmount));
+ 
+            if(maze[y][x] == 2 && maze[y-1][x] ==1){
+               maze[y][x] = 3;
+               coin++;
+            }
+            
+        }
     }
 }

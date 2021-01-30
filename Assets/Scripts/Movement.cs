@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     [SerializeField]private bool isGrounded;
     private float dir;
 
-    
+    public static bool moved = false;
     private int wall;
     private Rigidbody rb;
     private BoxCollider col;
@@ -49,6 +49,9 @@ public class Movement : MonoBehaviour
         }
     }
     void FixedUpdate(){
+        if(dir != 0){
+            moved = true;
+        }
         if(wall == 0 || dir == -wall){
             transform.RotateAround(moveCenter.transform.position, Vector3.up, dir * speed * Time.deltaTime);
             wall=0;

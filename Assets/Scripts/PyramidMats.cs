@@ -38,12 +38,12 @@ public class PyramidMats : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(boss.Stage3());
 
-        print("test2");
+//        print("test2");
     }
     public IEnumerator TurnYellow(Boss boss){
         boss.shootStage = 4;
         WaitForSeconds gap = new WaitForSeconds(.05f);
-        print("test3");
+        
         while(ColorsAreClose(color,safeColor) == false){
             color =  Color.Lerp(color, safeColor,.1f);
             top.SetColor("_EmissionColor", color);
