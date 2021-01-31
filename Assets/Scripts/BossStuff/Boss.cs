@@ -52,7 +52,10 @@ public class Boss : MonoBehaviour
     }
     void HpUpdate(){
         hpSlider.GetComponent<Slider>().value = HP;
-        Score.instance?.ChangeScore(5);
+        if(Score.instance != null ){
+            Score.instance.ChangeScore(5);
+        }
+        
 
         if(HP <= 0){
             
@@ -163,6 +166,9 @@ public class Boss : MonoBehaviour
         
 
         lazerEffect.transform.position = AimObject.transform.position;
+    }
+    void OnDisable(){
+        Debug.Log("baddy here");
     }
     
 }

@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
         if(HP <= 0 && !dead){
             dead = true;
 //            print("you lost!");
-            LevelLoader.instance.GotoScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1);
+            Score.instance.score =0;
+            LevelLoader.instance.GotoScene(3);
         }
     }
     

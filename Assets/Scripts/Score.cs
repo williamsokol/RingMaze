@@ -29,11 +29,16 @@ public class Score : MonoBehaviour
     public void ChangeScore(int scoreChange)
     {
         score  +=  scoreChange;
-        scoreText.text = "Score: " + score;
+        if(scoreText != null){
+            scoreText.text = "Score: " + score;
+        }
+        
     }
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        scoreText  = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-        scoreText.text = "Score: " + score;
+        scoreText  = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+        if(scoreText != null){
+            scoreText.text = "Score: " + score;
+        }
     }
 }
